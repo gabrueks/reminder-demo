@@ -13,7 +13,7 @@ module.exports = {
             .create({
                 body: message,
                 from: 'whatsapp:+18444314315',
-                to: `whatsapp:+55${to}`
+                to
             });
         } catch (err) {
             console.log(err);
