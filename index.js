@@ -24,9 +24,8 @@ app.post("/message", (req, res) => {
         hours = `${Number(splitedMessage[1].substring(0, 2)) + 3}:${Number(splitedMessage[1].substring(3, 5))}`;
     }
     const date = new Date(`${splitedMessage[0]} ${hours}`);
-    console.log(req.body)
     new CronJob(date, function() {
-        sendMessage(splitedMessage[3], req.body.to);
+        sendMessage(splitedMessage[3], req.body.To);
     }, null, true, "America/Sao_Paulo");
     res.send("OK");
 });
@@ -34,5 +33,3 @@ app.post("/message", (req, res) => {
 app.listen(process.env.PORT || 8080, () => {
     console.log("Server is running on port 8080");
 });
-
-sendMessage("Teste", "13991787399");
