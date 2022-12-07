@@ -23,7 +23,7 @@ app.post("/message", (req, res) => {
     if (process.env.PORT) {
         hours = `${Number(splitedMessage[1].substring(0, 2)) + 3}:${Number(splitedMessage[1].substring(3, 5))}`;
     }
-    const date = new Date(`${splitedMessage[0]} ${hours}`).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    const date = new Date(`${splitedMessage[0]} ${hours}`);
     new CronJob(date, function() {
         sendMessage(splitedMessage[3], req.body.to);
     }, null, true, "America/Sao_Paulo");
