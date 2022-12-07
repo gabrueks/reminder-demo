@@ -15,6 +15,8 @@ const dailyReminders = [
     "12-08-2022 / 09:00 / sim / Trabalhar",
 ]
 
+const CronJob = require('cron').CronJob;
+
 dailyReminders.forEach(reminder => {
     const splitedMessage = reminder.split(" / ");
     let hours = splitedMessage[1];
@@ -28,7 +30,6 @@ dailyReminders.forEach(reminder => {
 })
 
 const app = express();
-const CronJob = require('cron').CronJob;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
