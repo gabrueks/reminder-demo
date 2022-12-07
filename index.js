@@ -7,12 +7,12 @@ const bodyParser = require("body-parser");
 const { sendMessage } = require("./sendMessage");
 
 const dailyReminders = [
-    "12-07-2022 / 06:20 / sim / Acordar!",
-    "12-07-2022 / 06:40 / sim / Café da manhã!",
-    "12-07-2022 / 07:00 / sim / Tomar banho!",
-    "12-07-2022 / 07:15 / sim / Passear com a Yummi",
-    "12-07-2022 / 08:30 / sim / Passar meu café",
-    "12-07-2022 / 09:00 / sim / Trabalhar",
+    "12-08-2022 / 06:20 / sim / Acordar!",
+    "12-08-2022 / 06:40 / sim / Café da manhã!",
+    "12-08-2022 / 07:00 / sim / Tomar banho!",
+    "12-08-2022 / 07:15 / sim / Passear com a Yummi",
+    "12-08-2022 / 08:30 / sim / Passar meu café",
+    "12-08-2022 / 09:00 / sim / Trabalhar",
 ]
 
 dailyReminders.forEach(reminder => {
