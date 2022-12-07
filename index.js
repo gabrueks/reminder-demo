@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 app.post("/message", (req, res) => {
     const splitedMessage = req.body.Body.split(" / ");
     const date = new Date(`${splitedMessage[0]} ${splitedMessage[1]}`).toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"});
+    console.log(date)
     new CronJob(date, function() {
         sendMessage(splitedMessage[3], req.body.to);
     }, null, true, "America/Sao_Paulo");
