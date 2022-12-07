@@ -6,6 +6,27 @@ const bodyParser = require("body-parser");
 
 const { sendMessage } = require("./sendMessage");
 
+const dailyReminders = [
+    "12-07-2022 / 06:20 / sim / Acordar!",
+    "12-07-2022 / 06:40 / sim / Café da manhã!",
+    "12-07-2022 / 07:00 / sim / Tomar banho!",
+    "12-07-2022 / 07:15 / sim / Passear com a Yummi",
+    "12-07-2022 / 08:30 / sim / Passar meu café",
+    "12-07-2022 / 09:00 / sim / Trabalhar",
+]
+
+dailyReminders.forEach(reminder => {
+    const splitedMessage = reminder.split(" / ");
+    let hours = splitedMessage[1];
+    if (process.env.PORT) {
+        hours = `${Number(splitedMessage[1].substring(0, 2)) + 3}:${Number(splitedMessage[1].substring(3, 5))}`;
+    }
+    const date = new Date(`${splitedMessage[0]} ${hours}`);
+    new CronJob(date, function() {
+        sendMessage(splitedMessage[3], "13991787399");
+    }, null, true, "America/Sao_Paulo");
+})
+
 const app = express();
 const CronJob = require('cron').CronJob;
 
