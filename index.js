@@ -19,8 +19,11 @@ app.get("/", (req, res) => {
 
 app.post("/message", (req, res) => {
     const splitedMessage = req.body.Body.split(" / ");
-    const date = new Date(`${splitedMessage[0]} ${splitedMessage[1]}`).toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"});
-    console.log(date)
+    let hours = splitedMessage[1];
+    if (process.env.PORT) {
+        hours = `${Number(splitedMessage[1].substring(0, 2))}:${Number(splitedMessage[1].substring(3, 3))}`;
+    }
+    const date = new Date(`${splitedMessage[0]} ${hours}`).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
     new CronJob(date, function() {
         sendMessage(splitedMessage[3], req.body.to);
     }, null, true, "America/Sao_Paulo");
