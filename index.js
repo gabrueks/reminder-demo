@@ -25,7 +25,7 @@ app.post("/message", (req, res) => {
     }
     const date = new Date(`${splitedMessage[0]} ${hours}`);
     new CronJob(date, function() {
-        sendMessage(splitedMessage[3], req.body.To);
+        sendMessage(splitedMessage[3], req.body.From);
     }, null, true, "America/Sao_Paulo");
     res.send("OK");
 });
